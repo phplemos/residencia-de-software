@@ -1,5 +1,5 @@
 import {Feather} from '@expo/vector-icons'
-import { Container, TarefaDone } from "./style";
+import { Container, TarefaDone, TarefaText, TarefaFavoritado } from "./style";
 
 export function Tarefa(){
     return (
@@ -7,6 +7,12 @@ export function Tarefa(){
             <TarefaDone>
                 <Feather name="circle" size={24} color="#272A23"/>
             </TarefaDone>
+            <TarefaText>
+                Tarefa
+            </TarefaText>
+            <TarefaFavoritado>
+                <Feather name="star" size={24} color="#272A23"/>
+            </TarefaFavoritado>
         </Container>
     );
 }

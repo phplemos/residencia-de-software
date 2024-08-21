@@ -6,8 +6,9 @@ export const Container = styled.TouchableOpacity`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #DADCD5;
+    background-color: #C0C4B8;
     border-radius: 8px;
+    padding: 10px;
     overflow: hidden;
 `;
 
