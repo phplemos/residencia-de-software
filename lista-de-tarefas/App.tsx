@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { Tarefa } from './src/components/Tarefa';
-
+import { TopbarTarefa } from './src/components/TopbarTarefa';
+import { BotaoAddTarefa } from './src/components/BotaoAddTarefa';
+import { ListaTarefas } from './src/components/ListaTarefas';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <Tarefa/>
+      <TopbarTarefa nomeTarefa={"Tarefa de pedro"}/>
+      <ListaTarefas/>
+      <BotaoAddTarefa/>
       <StatusBar style="auto" />
     </View>
   );
@@ -14,11 +16,13 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    display:'flex',
+    height:'100%',
     backgroundColor: '#DADCD5',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: 'center',
     padding:16,
+    paddingTop:45,
     gap:16
   },
 });

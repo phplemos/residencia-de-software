@@ -1,6 +1,11 @@
 import {Feather} from '@expo/vector-icons'
 import { Container, TarefaDone, TarefaText, TarefaFavoritado } from "./style";
 
+type Tarefa = {
+    descricao: String,
+    check: Boolean,
+}
+
 export function Tarefa(){
     return (
         <Container>
