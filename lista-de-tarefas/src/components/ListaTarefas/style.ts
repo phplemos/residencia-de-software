@@ -8,5 +8,6 @@ export const Container = styled.ScrollView`
     flex-flow: column nowrap;
     padding-bottom: 10px;
     overflow: hidden;
+    
 `;
 

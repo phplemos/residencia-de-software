@@ -1,7 +1,7 @@
 import {Feather} from '@expo/vector-icons'
 import { Container, TarefaDone, TarefaText, TarefaFavoritado } from "./style";
 
-type Tarefa = {
+type TarefaType = {
     descricao: String,
     check: Boolean,
 }

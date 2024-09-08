@@ -10,6 +10,7 @@ export const Container = styled.TouchableOpacity`
     border-radius: 8px;
     padding: 10px;
     overflow: hidden;
+    margin-top: 16px;
 `;
 
 export const TarefaText = styled.Text`
