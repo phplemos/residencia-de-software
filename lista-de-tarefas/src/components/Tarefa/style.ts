@@ -27,7 +27,7 @@ export const TarefaDone = styled.TouchableOpacity`
     align-items: center;
 `;
 
-export const TarefaFavoritado = styled.TouchableOpacity`
+export const TarefaDelete = styled.TouchableOpacity`
 width: 28px;
 height: 28px;
 //border-color: #F51E10;

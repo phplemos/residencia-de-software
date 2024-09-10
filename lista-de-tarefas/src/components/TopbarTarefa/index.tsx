@@ -1,5 +1,6 @@
 import { Container, ButtonVoltar, ButtonVoltarText, ButtonNomeTarefa, ButtonNomeTarefaText } from "./style";
-import { Feather } from "@expo/vector-icons"
+import { Feather } from "@expo/vector-icons";
+import {Text} from 'react-native';
 type Props = {
     nomeTarefa: String
 }

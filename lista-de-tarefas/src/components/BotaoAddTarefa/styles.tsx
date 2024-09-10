@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled.View`
     width: 90%;
     height: 50px;
     flex-direction: row;
@@ -13,7 +13,9 @@ export const Container = styled.TouchableOpacity`
     gap: 15px;
 `;
 
-export const TextAddTarefa = styled.Text`
+export const TextAddTarefa = styled.TextInput`
+    flex:1;
     font-size:18px;
     color:#DADCD5;
 `;
+

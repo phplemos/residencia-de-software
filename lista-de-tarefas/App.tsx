@@ -1,46 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { TopbarTarefa } from './src/components/TopbarTarefa';
-import { BotaoAddTarefa } from './src/components/BotaoAddTarefa';
-import { ListaTarefas } from './src/components/ListaTarefas';
-import { useState } from 'react';
-import { FlatList } from 'react-native';
-import { Tarefa } from './src/components/Tarefa';
+import { View } from 'react-native';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import VerTarefa from './src/screens/VerTarefa';
+import ListaTarefas from './src/screens/ListaTarefas';
+
 export default function App() {
 
-  const [tarefaText, setTarefaText] = useState("");
-  const [tarefas, setTarefas] = useState<{ description: string, check: boolean }[]>([]);
+  const Stack = createNativeStackNavigator();
 
   return (
-    <View style={styles.container}>
-      <TopbarTarefa nomeTarefa={"Tarefa de pedro"} />
-      <FlatList data={tarefas} keyExtractor={(item, index) => index.toString()}
-        renderItem={
-          (item) => (<Tarefa />)
-        }
-        ListEmptyComponent={() => (
-          <View>
-            <Text>Você ainda não cadastrou uma tarefa</Text>
-          </View>
-        )}
-      />
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='ListaTarefas' screenOptions={{ headerShown: false }} >
+        <Stack.Screen name='ListaTarefas' component={ListaTarefas} />
+        <Stack.Screen name='VerTarefa' component={VerTarefa} />
 
-
-      <BotaoAddTarefa />
-      <StatusBar style="auto" />
-    </View>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    height: '100%',
-    backgroundColor: '#DADCD5',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 16,
-    paddingTop: 45,
-    gap: 16
-  },
-});
