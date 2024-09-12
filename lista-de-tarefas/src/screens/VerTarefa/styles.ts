@@ -11,8 +11,9 @@ export const Container = styled.View`
     gap: 16px;
 `;
 
+
+
 export const ContainerDescricao = styled.View`
-    
     height: 50%;
     width: 90%;
     background-color: #DADCD5;

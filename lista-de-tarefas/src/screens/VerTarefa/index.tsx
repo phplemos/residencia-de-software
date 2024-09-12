@@ -7,14 +7,12 @@ import { RootStackParamsList } from "../../utils/types";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 type Props = NativeStackScreenProps<RootStackParamsList>;
-export default function VerTarefa({route}:any) {
-    
-    const 
+
+export default function VerTarefa({ route }: any) {
 
     return (
         <Container>
             <TopbarTarefa nomeTarefa={"Descrição"} />
-
 
             <ContainerDescricao>
                 <Text>

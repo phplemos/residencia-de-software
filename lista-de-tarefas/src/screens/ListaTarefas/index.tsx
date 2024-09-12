@@ -4,6 +4,7 @@ import { FlatList } from 'react-native';
 import { Tarefa } from '../../components/Tarefa'
 import { BotaoAddTarefa } from '../../components/BotaoAddTarefa';
 import { StatusBar } from 'expo-status-bar';
+import { TopbarTarefa } from "../../components/TopbarTarefa";
 
 export default function ListaTarefas() {
 
@@ -53,13 +54,15 @@ export default function ListaTarefas() {
 
   return (
     <View style={styles.container}>
+      <TopbarTarefa nomeTarefa={"Descrição"} />
+
       <View style={styles.containerInput}>
         <Text style={styles.textAddTarefa}>Quantidade de tarefas: {countTarefas} </Text>
       </View>
       <FlatList data={tarefas} keyExtractor={(item, index) => index.toString()}
         renderItem={
           ({ item }) => (<Tarefa
-            
+            id={10}
             titulo={item.description}
             status={item.check}
             onCheck={() => handleTarefaChangeStatus(item)}
