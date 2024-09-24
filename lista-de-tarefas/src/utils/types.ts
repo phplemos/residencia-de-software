@@ -6,7 +6,15 @@ export type TarefaProps = {
     onRemove?: () => void;
 }
 
+export type LoginProps = {
+    email:string;
+    senha:string;
+    signIn: () => void;
+    signUp: () => void; 
+}
+
 export type RootStackParamsList = {
     ListarTarefas: undefined;
     VerTarefa:TarefaProps;
+    Login:LoginProps;
 }

@@ -1,5 +1,10 @@
-import { View, Text } from "react-native";
-import { EmailInput, Container, LoginButton,ContainerInput,TextLoginButton } from "./style";
+import { Text } from "react-native";
+import {
+  EmailInput,
+  Container,
+  ContainerInput,
+} from "./style";
+import { BrandingLogin } from "../BrandingLogin";
 
 export function LoginInput() {
   return (
@@ -10,10 +15,6 @@ export function LoginInput() {
         <Text>Senha:</Text>
         <EmailInput placeholder="**************" />
       </ContainerInput>
-      <Text>Esqueceu a senha?</Text>
-      <LoginButton>
-        <TextLoginButton>Acessar</TextLoginButton>
-      </LoginButton>
     </Container>
   );
 }
