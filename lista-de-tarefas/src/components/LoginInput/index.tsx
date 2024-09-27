@@ -1,19 +1,35 @@
 import { Text } from "react-native";
-import {
-  EmailInput,
-  Container,
-  ContainerInput,
-} from "./style";
+import { EmailInput, Container, ContainerInput } from "./style";
 import { BrandingLogin } from "../BrandingLogin";
 
-export function LoginInput() {
+type Props = {
+  onChangeEmailText: (text: string) => void;
+  onChangePasswordText: (text: string) => void;
+  valueEmail: string;
+  valuePassword: string;
+};
+
+export function LoginInput({
+  onChangeEmailText,
+  onChangePasswordText,
+  valueEmail,
+  valuePassword,
+}: Props) {
   return (
     <Container>
       <ContainerInput>
         <Text>Email:</Text>
-        <EmailInput placeholder="exemplo@email.com" />
+        <EmailInput
+          value={valueEmail}
+          onChangeText={onChangeEmailText}
+          placeholder="exemplo@email.com"
+        />
         <Text>Senha:</Text>
-        <EmailInput placeholder="**************" />
+        <EmailInput
+          value={valuePassword}
+          onChangeText={onChangePasswordText}
+          placeholder="**************"
+        />
       </ContainerInput>
     </Container>
   );

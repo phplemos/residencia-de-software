@@ -16,7 +16,7 @@ export default function App() {
     <TarefaProvider>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Login"
+          initialRouteName="ListaTarefas"
           screenOptions={{ headerShown: false }}
         >
           <Stack.Screen name="ListaTarefas" component={ListaTarefas} />
