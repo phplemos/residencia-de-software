@@ -3,10 +3,16 @@ import { Container, ButtonText, LoginButton, TextLoginButton } from "./styles";
 import React, { useState } from "react";
 import { BrandingLogin } from "../../components/BrandingLogin";
 import { LoginInput } from "../../components/LoginInput";
+import { LoginProps } from "../../utils/types";
 
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  function handleSignIn() {
+    
+    
+  }
 
   return (
     <Container>

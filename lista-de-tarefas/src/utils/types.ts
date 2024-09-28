@@ -13,8 +13,16 @@ export type LoginProps = {
     signUp: () => void; 
 }
 
+export type UserProps = {
+    nome: string;
+    email: string;
+    password: string;
+    profilePic: string;
+}
+
 export type RootStackParamsList = {
     ListarTarefas: undefined;
     VerTarefa:TarefaProps;
     Login:LoginProps;
+    User:UserProps;
 }
