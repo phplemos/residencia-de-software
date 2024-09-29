@@ -1,5 +1,7 @@
+import { UserProps } from "../utils/types";
+
 interface LoginContextProps {
     user: UserProps;
-    login: (email: string, password: string) => void;
-    logout: () => void;
+    signIn: (email: string, password: string) => void;
+    signOut: () => void;
 }
