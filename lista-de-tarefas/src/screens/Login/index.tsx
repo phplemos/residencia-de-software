@@ -1,40 +1,85 @@
 import { View, Text } from "react-native";
-import { Container, ButtonText, LoginButton, TextLoginButton } from "./styles";
-import React, { useState } from "react";
+import {
+  Container,
+  ButtonText,
+  LoginButton,
+  TextLoginButton,
+  ContainerLogin,
+} from "./styles";
 import { BrandingLogin } from "../../components/BrandingLogin";
-import { LoginInput } from "../../components/LoginInput";
-import { LoginProps } from "../../utils/types";
+import { FormInput } from "../../components/FormInput";
+import { Formik } from "formik";
+import * as Yup from "yup";
 
 export function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const LoginSchema = Yup.object().shape({
+    email: Yup.string().email("Email inválido").required("Campo obrigatório"),
+    password: Yup.string().required("Campo obrigatório"),
+  });
 
-  function handleSignIn() {
-    
-    
+  function handleSignIn(email: string, password: string) {
+    console.log("SignIn" + email + password);
   }
 
   return (
     <Container>
       <BrandingLogin />
-      <LoginInput
-        onChangeEmailText={setEmail}
-        valueEmail={email}
-        onChangePasswordText={setPassword}
-        valuePassword={password}
-      />
-      <ButtonText>
-        <Text>Esqueceu a senha?</Text>
-      </ButtonText>
-      <LoginButton>
-        <TextLoginButton>Acessar</TextLoginButton>
-      </LoginButton>
-      <View style={{ alignItems: "center" }}>
-        <Text>Não tem cadastro?</Text>
-        <ButtonText>
-          <Text style={{ color: "#142E52" }}>Faça seu cadastro aqui!</Text>
-        </ButtonText>
-      </View>
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        validationSchema={LoginSchema}
+        onSubmit={(values, { resetForm }) => {
+          handleSignIn(values.email, values.password);
+          resetForm({ values: { email: "", password: "" } });
+        }}
+      >
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          values,
+          errors,
+          touched,
+        }) => (
+          <ContainerLogin>
+            <FormInput
+              label="Email"
+              placeHolder="Digite seu email"
+              value={values.email}
+              onChangeText={handleChange("email")}
+              onBlur={handleBlur("email")}
+              secureTextEntry={false}
+            />
+            {touched.email && errors.email && (
+              <Text style={{ color: "red" }}>{errors.email}</Text>
+            )}
+            <FormInput
+              label="Senha"
+              placeHolder="Digite sua senha"
+              value={values.password}
+              onChangeText={handleChange("password")}
+              onBlur={handleBlur("password")}
+              secureTextEntry={true}
+            />
+            {touched.password && errors.password && (
+              <Text style={{ color: "red" }}>{errors.password}</Text>
+            )}
+            <ButtonText>
+              <Text>Esqueceu a senha?</Text>
+            </ButtonText>
+            <LoginButton onPress={() => handleSubmit()}>
+              <TextLoginButton>Acessar</TextLoginButton>
+            </LoginButton>
+            <View style={{ alignItems: "center" }}>
+              <Text>Não tem cadastro?</Text>
+              <ButtonText>
+                <Text style={{ color: "#142E52" }}>
+                  Faça seu cadastro aqui!
+                </Text>
+              </ButtonText>
+            </View>
+          </ContainerLogin>
+        )}
+      </Formik>
     </Container>
   );
 }
