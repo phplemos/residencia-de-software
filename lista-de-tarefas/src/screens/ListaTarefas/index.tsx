@@ -54,7 +54,7 @@ export default function ListaTarefas() {
           onPress: () => {
             const updatedTarefas = tarefas.filter(
               (tarefa) => tarefa.titulo !== tarefaToRemove.titulo
-            );
+            );  
             setTarefas(updatedTarefas);
           },
         },
