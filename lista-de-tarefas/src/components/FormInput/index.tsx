@@ -1,6 +1,5 @@
 import { Text } from "react-native";
 import { EmailInput, ContainerInput } from "./style";
-import { BrandingLogin } from "../BrandingLogin";
 
 type Props = {
   onChangeText: (text: string) => void;
@@ -8,7 +7,7 @@ type Props = {
   value: string;
   label: string;
   placeHolder: string;
-  secureTextEntry:boolean;
+  secureTextEntry: boolean;
 };
 
 export function FormInput({
@@ -17,7 +16,7 @@ export function FormInput({
   value,
   label,
   placeHolder,
-  secureTextEntry
+  secureTextEntry,
 }: Props) {
   return (
     <ContainerInput>

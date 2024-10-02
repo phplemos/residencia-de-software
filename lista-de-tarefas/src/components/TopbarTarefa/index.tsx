@@ -9,8 +9,8 @@ import { Feather } from "@expo/vector-icons";
 import { GestureResponderEvent, Text } from "react-native";
 
 type Props = {
-  nomeTarefa: String,
-  popButton:(event: GestureResponderEvent) => void;
+  nomeTarefa: String;
+  popButton: (event: GestureResponderEvent) => void;
 };
 
 export function TopbarTarefa(props: Props) {
@@ -22,9 +22,7 @@ export function TopbarTarefa(props: Props) {
           Voltar
         </ButtonVoltarText>
       </ButtonVoltar>
-      <ButtonNomeTarefa>
-        <ButtonNomeTarefaText>{props.nomeTarefa}</ButtonNomeTarefaText>
-      </ButtonNomeTarefa>
+      <ButtonNomeTarefaText>{props.nomeTarefa}</ButtonNomeTarefaText>
     </Container>
   );
 }

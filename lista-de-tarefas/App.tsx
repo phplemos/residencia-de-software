@@ -9,16 +9,17 @@ import ListaTarefas from "./src/screens/ListaTarefas";
 import { Login } from "./src/screens/Login";
 import TarefaProvider from "./src/context/TarefaContext";
 import { Cadastro } from "./src/screens/Cadastro";
-
+import Pesquisar from "./src/screens/Pesquisar";
 export default function App() {
   const Stack = createNativeStackNavigator();
-
   return (
     <TarefaProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Cadastro" screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName="Pesquisar" screenOptions={{ headerShown: false }}>
+
           <Stack.Screen name="ListaTarefas" component={ListaTarefas} />
           <Stack.Screen name="VerTarefa" component={VerTarefa} />
+          <Stack.Screen name="Pesquisar" component={Pesquisar} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Cadastro" component={Cadastro} />
         </Stack.Navigator>

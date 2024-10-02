@@ -6,24 +6,37 @@ import {
   TextLoginButton,
   ContainerLogin,
 } from "./styles";
-import { BrandingLogin } from "../../components/BrandingLogin";
+import { Branding } from "../../components/Branding";
 import { FormInput } from "../../components/FormInput";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { RootStackParamsList } from "../../utils/types";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { useNavigation } from "@react-navigation/native";
+import SignInService from "../../services/login";
+
+type Props = NativeStackScreenProps<RootStackParamsList>;
 
 export function Login() {
+  const navigation = useNavigation<Props["navigation"]>();
+
   const LoginSchema = Yup.object().shape({
     email: Yup.string().email("Email inválido").required("Campo obrigatório"),
     password: Yup.string().required("Campo obrigatório"),
   });
 
   function handleSignIn(email: string, password: string) {
-    console.log("SignIn" + email + password);
+    const login = SignInService(email, password);
+    if (login) {
+      navigation.navigate("ListaTarefas");
+    } else {
+      alert("Email ou senha inválidos");
+    }
   }
 
   return (
     <Container>
-      <BrandingLogin />
+      <Branding textoBranding="Seja bem vindo ao" />
       <Formik
         initialValues={{ email: "", password: "" }}
         validationSchema={LoginSchema}

@@ -1,10 +1,21 @@
-import { Container, ContainerForm } from "./styles";
+import {
+  Container,
+  ContainerForm,
+  ContainerBranding,
+  TextCheckbox,
+  ContainerCheckbox,
+  TextSignUpButton,
+  ButtonSignUp,
+  AlertText,
+  ContainerTopBar,
+} from "./styles";
+import { TopbarTarefa } from "../../components/TopbarTarefa";
 import { FormInput } from "../../components/FormInput";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Text } from "react-native";
+import { Branding } from "../../components/Branding";
 import Checkbox from "expo-checkbox";
-import React from "react";
+import React, { useEffect } from "react";
 
 export function Cadastro() {
   const SignUpSchema = Yup.object().shape({
@@ -13,12 +24,21 @@ export function Cadastro() {
       .min(6, "Mínimo de 6 caracteres")
       .max(12, "Máximo de 12 caracteres")
       .required("Campo obrigatório"),
+    termos: Yup.boolean().oneOf([true], "Aceite os termos"),
   });
+
   function handleSignUp(email: string, password: string) {
     console.log("SignUp" + email + password);
   }
+
   return (
     <Container>
+      <ContainerTopBar>
+        <TopbarTarefa popButton={() => {}} nomeTarefa={"Login"} />
+      </ContainerTopBar>
+      <ContainerBranding>
+        <Branding textoBranding="Faça seu cadastro no" />
+      </ContainerBranding>
       <ContainerForm>
         <Formik
           initialValues={{ email: "", password: "", termos: false }}
@@ -37,6 +57,10 @@ export function Cadastro() {
             touched,
           }) => {
             const [checked, setChecked] = React.useState(false);
+            useEffect(() => {
+              touched.termos = checked;
+              values.termos = checked;
+            }, [checked]);
             return (
               <ContainerForm>
                 <FormInput
@@ -48,7 +72,7 @@ export function Cadastro() {
                   secureTextEntry={false}
                 />
                 {touched.email && errors.email && (
-                  <Text style={{ color: "red" }}>{errors.email}</Text>
+                  <AlertText>{errors.email}</AlertText>
                 )}
                 <FormInput
                   label="Senha"
@@ -59,13 +83,22 @@ export function Cadastro() {
                   secureTextEntry={true}
                 />
                 {touched.password && errors.password && (
-                  <Text style={{ color: "red" }}>{errors.password}</Text>
+                  <AlertText>{errors.password}</AlertText>
                 )}
-                <Checkbox
-                  value={checked}
-                  onValueChange={(termo) => setChecked(termo)}
-                  color={values.termos ? "#4630EB" : undefined}
-                />
+                <ContainerCheckbox>
+                  <Checkbox
+                    value={checked}
+                    onValueChange={(termo) => setChecked(termo)}
+                    color={values.termos ? "#4630EB" : undefined}
+                  />
+                  <TextCheckbox>Aceitar os Termos de uso.</TextCheckbox>
+                </ContainerCheckbox>
+                {touched.termos && errors.termos && (
+                  <AlertText>{errors.termos}</AlertText>
+                )}
+                <ButtonSignUp onPress={() => handleSubmit()}>
+                  <TextSignUpButton>Cadastrar</TextSignUpButton>
+                </ButtonSignUp>
               </ContainerForm>
             );
           }}
