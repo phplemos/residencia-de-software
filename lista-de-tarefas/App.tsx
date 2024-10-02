@@ -16,7 +16,7 @@ export default function App() {
   return (
     <TarefaProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName="Cadastro" screenOptions={{ headerShown: false }}>
           <Stack.Screen name="ListaTarefas" component={ListaTarefas} />
           <Stack.Screen name="VerTarefa" component={VerTarefa} />
           <Stack.Screen name="Login" component={Login} />
