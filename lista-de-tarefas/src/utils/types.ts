@@ -1,7 +1,7 @@
 export type TarefaProps = {
   id: number;
   titulo: string;
-  status: boolean;
+  status?: boolean;
   onCheck?: () => void;
   onRemove?: () => void;
 };

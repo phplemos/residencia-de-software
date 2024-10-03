@@ -16,7 +16,7 @@ export default function VerTarefa() {
 
   return (
     <Container>
-      <TopbarTarefa popButton={navigation.popToTop} nomeTarefa={tarefa.titulo} />
+      <TopbarTarefa popButton={navigation.goBack} nomeTarefa={tarefa.titulo} />
       <ContainerDescricao>
         <Text
           style={
