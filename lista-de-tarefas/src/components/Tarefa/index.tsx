@@ -20,11 +20,7 @@ export function Tarefa(props: TarefaProps) {
   return (
     <Container onPress={() => handlePress()}>
       <TarefaDone onPress={props.onCheck}>
-        <Feather
-          name={props.status ? "check-circle" : "circle"}
-          size={24}
-          color="#272A23"
-        />
+        <Feather name={props.status ? "check-circle" : "circle"} size={24} color="#272A23" />
       </TarefaDone>
       <TarefaText
         style={

@@ -13,10 +13,10 @@ type Props = {
   popButton: (event: GestureResponderEvent) => void;
 };
 
-export function TopbarTarefa(props: Props) {
+export function VoltarButton(props: Props) {
   return (
     <Container>
-      <ButtonVoltar onPress={props.popButton}>
+      <ButtonVoltar onPress={props.goBack}>
         <ButtonVoltarText>
           <Feather name={"arrow-left"} color={"#272A23"} size={20}></Feather>
           Voltar

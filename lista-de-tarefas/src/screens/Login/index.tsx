@@ -13,25 +13,29 @@ import * as Yup from "yup";
 import { RootStackParamsList } from "../../utils/types";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
-import SignInService from "../../services/login";
+import { useContext } from "react";
+import { LoginContext } from "../../context/LoginContext";
 
 type Props = NativeStackScreenProps<RootStackParamsList>;
 
 export function Login() {
   const navigation = useNavigation<Props["navigation"]>();
+  const { signIn } = useContext(LoginContext);
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string().email("Email inválido").required("Campo obrigatório"),
     password: Yup.string().required("Campo obrigatório"),
   });
 
-  function handleSignIn(email: string, password: string) {
-    const login = SignInService(email, password);
-    if (login) {
-      navigation.navigate("ListaTarefas");
+  async function handleSignIn(emailForm: string, passwordForm: string) {
+    const requestLogin = await signIn(emailForm, passwordForm);
+    if (requestLogin) {
+      navigation.navigate("Home");
     } else {
-      alert("Email ou senha inválidos");
+      console.log(requestLogin);
+      //alert("Email e senha inválidos ou usuário não cadastrado");
     }
+    navigation.navigate("Home");
   }
 
   return (

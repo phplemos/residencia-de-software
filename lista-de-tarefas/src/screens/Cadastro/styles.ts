@@ -50,8 +50,10 @@ export const ButtonSignUp = styled.TouchableOpacity`
 `;
 
 export const TextSignUpButton = styled.Text`
+
   color: #fff;
-`;
+` ;
+
 
 
 export const ContainerTopBar = styled.View`

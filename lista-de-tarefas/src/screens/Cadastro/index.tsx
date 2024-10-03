@@ -9,7 +9,7 @@ import {
   AlertText,
   ContainerTopBar,
 } from "./styles";
-import { TopbarTarefa } from "../../components/TopbarTarefa";
+import { VoltarButton } from "../../components/VoltarButton";
 import { FormInput } from "../../components/FormInput";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -34,7 +34,7 @@ export function Cadastro() {
   return (
     <Container>
       <ContainerTopBar>
-        <TopbarTarefa popButton={() => {}} nomeTarefa={"Login"} />
+        <VoltarButton popButton={() => {}} nomeTarefa={"Login"} />
       </ContainerTopBar>
       <ContainerBranding>
         <Branding textoBranding="Faça seu cadastro no" />

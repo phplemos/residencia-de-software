@@ -7,21 +7,20 @@ export type TarefaProps = {
 };
 
 export type LoginProps = {
-  email: string;
-  senha: string;
   signIn: (email: string, senha: string) => boolean;
 };
 
 export type UserProps = {
+  id: number;
   nome: string;
   email: string;
-  password: string;
+  password?: string;
   profilePic: string;
 };
 
 export type RootStackParamsList = {
-  ListarTarefas: undefined;
-  VerTarefa: TarefaProps;
-  Login: LoginProps;
-  User: UserProps;
+  Home: undefined;
+  VerTarefa?: TarefaProps;
+  Login?: LoginProps;
+  User?: UserProps;
 };

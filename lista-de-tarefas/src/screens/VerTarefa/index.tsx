@@ -1,14 +1,14 @@
 import { Container, ButtonDeleteTarefa, ContainerDescricao } from "./styles";
 import { Text, TouchableOpacity } from "react-native";
-import { TopbarTarefa } from "../../components/TopbarTarefa";
+import { VoltarButton } from "../../components/VoltarButton";
 import { Feather } from "@expo/vector-icons";
 import { RootStackParamsList } from "../../utils/types";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { useContext } from "react";
 import { TarefaContext } from "../../context/TarefaContext";
 
-type Props = NativeStackScreenProps<RootStackParamsList>;
+type Props = NativeStackScreenProps<RootStackParamsList, "VerTarefa">;
 
 export default function VerTarefa() {
   const { tarefa } = useContext(TarefaContext);
@@ -16,7 +16,10 @@ export default function VerTarefa() {
 
   return (
     <Container>
-      <TopbarTarefa popButton={navigation.popToTop} nomeTarefa={tarefa.titulo} />
+      <VoltarButton
+        popButton={navigation.goBack}
+        nomeTarefa={tarefa.titulo}
+      />
       <ContainerDescricao>
         <Text
           style={
