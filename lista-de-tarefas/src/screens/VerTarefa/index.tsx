@@ -16,10 +16,14 @@ export default function VerTarefa() {
 
   return (
     <Container>
+<<<<<<< HEAD
       <VoltarButton
         popButton={navigation.goBack}
         nomeTarefa={tarefa.titulo}
       />
+=======
+      <TopbarTarefa popButton={navigation.goBack} nomeTarefa={tarefa.titulo} />
+>>>>>>> f62fbcdaeed6b0d8d86048cabe3990f850033254
       <ContainerDescricao>
         <Text
           style={

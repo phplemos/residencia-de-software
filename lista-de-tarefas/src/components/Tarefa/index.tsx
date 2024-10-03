@@ -8,7 +8,11 @@ import { TarefaContext } from "../../context/TarefaContext";
 
 type Props = NativeStackScreenProps<RootStackParamsList>;
 
-export function Tarefa(props: TarefaProps) {
+interface Test extends TarefaProps {
+  iconIsVisible?: boolean;
+
+}
+export function Tarefa({ iconIsVisible = true, ...props }: Test) {
   const { selectTarefa } = useContext(TarefaContext);
   const navigation = useNavigation<Props["navigation"]>();
 
@@ -19,9 +23,21 @@ export function Tarefa(props: TarefaProps) {
 
   return (
     <Container onPress={() => handlePress()}>
+<<<<<<< HEAD
       <TarefaDone onPress={props.onCheck}>
         <Feather name={props.status ? "check-circle" : "circle"} size={24} color="#272A23" />
       </TarefaDone>
+=======
+      {iconIsVisible && (
+        <TarefaDone onPress={props.onCheck}>
+          <Feather
+            name={props.status ? "check-circle" : "circle"}
+            size={24}
+            color="#272A23"
+          />
+        </TarefaDone>
+      )}
+>>>>>>> f62fbcdaeed6b0d8d86048cabe3990f850033254
       <TarefaText
         style={
           props.status
@@ -31,9 +47,11 @@ export function Tarefa(props: TarefaProps) {
       >
         {props.titulo}
       </TarefaText>
-      <TarefaDelete onPress={props.onRemove}>
-        <Feather name="trash" size={24} color="#272A23" />
-      </TarefaDelete>
+      {iconIsVisible && (
+        <TarefaDelete onPress={props.onRemove}>
+          <Feather name="trash" size={24} color="#272A23" />
+        </TarefaDelete>
+      )}
     </Container>
   );
 }
