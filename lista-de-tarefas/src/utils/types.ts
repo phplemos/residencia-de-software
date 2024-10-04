@@ -24,4 +24,5 @@ export type RootStackParamsList = {
   Login?: LoginProps;
   User?: UserProps;
   Cadastro: undefined;
+  Drawer: undefined;
 };

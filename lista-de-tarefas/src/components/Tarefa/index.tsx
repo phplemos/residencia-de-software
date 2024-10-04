@@ -2,7 +2,7 @@ import { Feather } from "@expo/vector-icons";
 import { Container, TarefaDone, TarefaText, TarefaDelete } from "./style";
 import { RootStackParamsList, TarefaProps } from "../../utils/types";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { TarefaContext } from "../../context/TarefaContext";
 

@@ -29,7 +29,7 @@ export function Login() {
   async function handleSignIn(emailForm: string, passwordForm: string) {
     const requestLogin = await signIn(emailForm, passwordForm);
     if (requestLogin) {
-      navigation.navigate("Home");
+      navigation.navigate("Drawer");
     } else {
       alert("Usuário ou senha incorretos");
     }
