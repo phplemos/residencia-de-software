@@ -66,7 +66,6 @@ export default function Home() {
 
   return (
     <Container>
-      <AppTopBar></AppTopBar>
       <FlatList
         data={tarefas}
         keyExtractor={(item, index) => index.toString()}

@@ -28,27 +28,33 @@ export default function CustomDrawer({ ...props }) {
       <ContainerProfile>
         <ContainerProfileInfo>
           <ContainerTextInfo>
-            <EmailInfo> phplemos.dev@gmail.com</EmailInfo>
+            <EmailInfo>phplemos.dev@gmail.com</EmailInfo>
             <NameInfo>Pedro Pinheiro</NameInfo>
           </ContainerTextInfo>
           <ProfilePic source={require("../../assets/blank_profile.jpg")} />
         </ContainerProfileInfo>
       </ContainerProfile>
-      <DrawerContentScrollView {...props}>
+      <DrawerContentScrollView {...props}  >
         <DrawerItem
           style={styles.DrawerItem}
-          label="Home"
+          labelStyle={{ color: "#DADCD5" }}
+          label="Minhas tarefas"
           onPress={() => navigation.navigate("Home")}
         />
         <DrawerItem
+          style={styles.DrawerItem}
+          labelStyle={{ color: "#DADCD5" }}
           label="Pesquisar"
           onPress={() => navigation.navigate("Pesquisar")}
         />
-        <DrawerItem
-          label="Logout"
+        
+      </DrawerContentScrollView>
+      <DrawerItem
+          style={styles.DrawerLogout}
+          labelStyle={{ color: "#DADCD5" }}
+          label={"Logout"}
           onPress={() => navigation.navigate("Login")}
         />
-      </DrawerContentScrollView>
     </Container>
   );
 }
@@ -56,6 +62,11 @@ export default function CustomDrawer({ ...props }) {
 const styles = StyleSheet.create({
   DrawerItem: {
     backgroundColor: "#272A23",
-    color: "#DADCD5",
+  },
+  DrawerLogout:{
+    backgroundColor: "#F51E10",
+  },
+  ContainerScrowView: {
+
   },
 });
