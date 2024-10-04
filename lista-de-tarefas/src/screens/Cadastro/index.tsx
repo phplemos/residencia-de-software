@@ -15,9 +15,17 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { Branding } from "../../components/Branding";
 import Checkbox from "expo-checkbox";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { RootStackParamsList, UserProps } from "../../utils/types";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { useNavigation } from "@react-navigation/native";
+import { CadastroContext } from "../../context/CadastroContext";
+
+type Props = NativeStackScreenProps<RootStackParamsList>;
 
 export function Cadastro() {
+  const navigation = useNavigation<Props["navigation"]>();
+  const { createUser } = useContext(CadastroContext);
   const SignUpSchema = Yup.object().shape({
     email: Yup.string().email("Email inválido").required("Campo obrigatório"),
     password: Yup.string()
@@ -27,25 +35,46 @@ export function Cadastro() {
     termos: Yup.boolean().oneOf([true], "Aceite os termos"),
   });
 
-  function handleSignUp(email: string, password: string) {
-    console.log("SignUp" + email + password);
+  function handleSignUp({ id, nome, email, password, profilePic }: UserProps) {
+    console.log({ id, nome, email, password, profilePic });
+    createUser({ id, nome, email, password, profilePic });
+    navigation.navigate("Login");
   }
 
   return (
     <Container>
       <ContainerTopBar>
-        <VoltarButton popButton={() => {}} nomeTarefa={"Login"} />
+        <VoltarButton
+          popButton={() => navigation.goBack}
+          nomeTarefa={"para o login"}
+        />
       </ContainerTopBar>
       <ContainerBranding>
         <Branding textoBranding="Faça seu cadastro no" />
       </ContainerBranding>
       <ContainerForm>
         <Formik
-          initialValues={{ email: "", password: "", termos: false }}
+          initialValues={{
+            id: Math.floor(Math.random() * 100), // Gerando numero aleatorio para o id
+            nome: "",
+            email: "",
+            password: "",
+            profilePic: "",
+            termos: false,
+          }}
           validationSchema={SignUpSchema}
           onSubmit={(values, { resetForm }) => {
-            handleSignUp(values.email, values.password);
-            resetForm({ values: { email: "", password: "", termos: false } });
+            handleSignUp({ ...values });
+            resetForm({
+              values: {
+                id: Math.floor(Math.random() * 100),
+                nome: "",
+                email: "",
+                password: "",
+                profilePic: "",
+                termos: false,
+              },
+            });
           }}
         >
           {({
@@ -63,6 +92,17 @@ export function Cadastro() {
             }, [checked]);
             return (
               <ContainerForm>
+                <FormInput
+                  label="Nome"
+                  placeHolder="Digite seu nome"
+                  value={values.nome}
+                  onChangeText={handleChange("nome")}
+                  onBlur={handleBlur("nome")}
+                  secureTextEntry={false}
+                />
+                {touched.nome && errors.nome && (
+                  <AlertText>{errors.nome}</AlertText>
+                )}
                 <FormInput
                   label="Email"
                   placeHolder="Digite seu email"

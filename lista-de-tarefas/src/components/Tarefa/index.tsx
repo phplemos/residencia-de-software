@@ -23,11 +23,11 @@ export function Tarefa({ iconIsVisible = true, ...props }: Test) {
 
   return (
     <Container onPress={() => handlePress()}>
-<<<<<<< HEAD
-      <TarefaDone onPress={props.onCheck}>
+
+      {/* <TarefaDone onPress={props.onCheck}>
         <Feather name={props.status ? "check-circle" : "circle"} size={24} color="#272A23" />
-      </TarefaDone>
-=======
+      </TarefaDone> */}
+
       {iconIsVisible && (
         <TarefaDone onPress={props.onCheck}>
           <Feather
@@ -37,7 +37,6 @@ export function Tarefa({ iconIsVisible = true, ...props }: Test) {
           />
         </TarefaDone>
       )}
->>>>>>> f62fbcdaeed6b0d8d86048cabe3990f850033254
       <TarefaText
         style={
           props.status

@@ -3,7 +3,7 @@ import { UserProps } from "../utils/types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface LoginContextProps {
-  signIn: (email: string, password: string) => Promise<UserProps | null>;
+  signIn: (email: string, password: string) => Promise<boolean>;
 }
 
 interface LoginProviderProps {
@@ -11,30 +11,24 @@ interface LoginProviderProps {
 }
 
 export const LoginContext = createContext<LoginContextProps>({
-  signIn: async (email: string, password: string) => null,
+  signIn: async () => false,
 });
 
 export function LoginProvider({ children }: LoginProviderProps) {
-  async function signIn(
-    email: string,
-    password: string
-  ): Promise<UserProps | null> {
+  async function signIn(email: string, password: string) {
     const requrestUser = await loadUser(email);
-    if (requrestUser && requrestUser.password === password) {
-      return {
-        id: requrestUser.id,
-        nome: requrestUser.nome,
-        email: requrestUser.email,
-        profilePic: requrestUser.profilePic,
-      } as UserProps;
+    console.log(requrestUser)
+    if (requrestUser) {
+      return true;
     }
-    return null;
+    return false;
   }
 
   async function loadUser(email: string) {
     try {
       const user = await AsyncStorage.getItem(email);
       if (user) {
+        console.log(user);
         return JSON.parse(user);
       }
     } catch (err) {
@@ -46,3 +40,5 @@ export function LoginProvider({ children }: LoginProviderProps) {
     <LoginContext.Provider value={{ signIn }}>{children}</LoginContext.Provider>
   );
 }
+
+export default LoginProvider;

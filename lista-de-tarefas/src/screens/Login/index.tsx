@@ -13,7 +13,7 @@ import * as Yup from "yup";
 import { RootStackParamsList } from "../../utils/types";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
-import { useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { LoginContext } from "../../context/LoginContext";
 
 type Props = NativeStackScreenProps<RootStackParamsList>;
@@ -21,7 +21,6 @@ type Props = NativeStackScreenProps<RootStackParamsList>;
 export function Login() {
   const navigation = useNavigation<Props["navigation"]>();
   const { signIn } = useContext(LoginContext);
-
   const LoginSchema = Yup.object().shape({
     email: Yup.string().email("Email inválido").required("Campo obrigatório"),
     password: Yup.string().required("Campo obrigatório"),
@@ -32,10 +31,8 @@ export function Login() {
     if (requestLogin) {
       navigation.navigate("Home");
     } else {
-      console.log(requestLogin);
-      //alert("Email e senha inválidos ou usuário não cadastrado");
+      alert("Usuário ou senha incorretos");
     }
-    navigation.navigate("Home");
   }
 
   return (
@@ -88,7 +85,7 @@ export function Login() {
             </LoginButton>
             <View style={{ alignItems: "center" }}>
               <Text>Não tem cadastro?</Text>
-              <ButtonText>
+              <ButtonText onPress={() => navigation.navigate("Cadastro")}>
                 <Text style={{ color: "#142E52" }}>
                   Faça seu cadastro aqui!
                 </Text>

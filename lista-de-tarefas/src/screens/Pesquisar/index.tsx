@@ -1,7 +1,7 @@
 import { View, Text, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Container, ContainerTop } from "./styles";
-import { TopbarTarefa } from "../../components/TopbarTarefa";
+import { VoltarButton } from "../../components/VoltarButton";
 import { SearchInput } from "../../components/SearchInput";
 import { useContext, useState } from "react";
 import { TarefaContext } from "../../context/TarefaContext";
@@ -17,7 +17,6 @@ export default function Pesquisar() {
     const navigation = useNavigation();
 
     function handlePress() {
-        navigation.navigate("ListaTarefas");
     }
 
     const filtrarTarefas = tarefas.filter((item) => item.titulo.toLowerCase().includes(searchText.toLowerCase()))
@@ -26,7 +25,7 @@ export default function Pesquisar() {
         <SafeAreaView style={{ flex: 1 }}>
             <Container>
                 <ContainerTop>
-                    <TopbarTarefa popButton={handlePress} nomeTarefa={"Procurar"} />
+                    <VoltarButton popButton={navigation.goBack} nomeTarefa={"Procurar"} />
                     <SearchInput placeholder="Digite aqui" value={searchText} onChangeText={(text) => setSearchText(text)} />
                 </ContainerTop>
                 <FlatList

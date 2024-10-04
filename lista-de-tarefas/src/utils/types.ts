@@ -23,4 +23,5 @@ export type RootStackParamsList = {
   VerTarefa?: TarefaProps;
   Login?: LoginProps;
   User?: UserProps;
+  Cadastro: undefined;
 };

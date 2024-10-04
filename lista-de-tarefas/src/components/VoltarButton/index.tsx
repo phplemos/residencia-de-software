@@ -16,7 +16,7 @@ type Props = {
 export function VoltarButton(props: Props) {
   return (
     <Container>
-      <ButtonVoltar onPress={props.goBack}>
+      <ButtonVoltar onPress={props.popButton}>
         <ButtonVoltarText>
           <Feather name={"arrow-left"} color={"#272A23"} size={20}></Feather>
           Voltar
