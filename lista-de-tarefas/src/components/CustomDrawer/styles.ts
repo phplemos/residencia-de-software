@@ -25,7 +25,6 @@ export const ContainerProfileInfo = styled.View`
   flex-direction: row;
   justify-content: space-between;
   overflow: hidden;
-
 `;
 
 export const ContainerTextInfo = styled.View`
@@ -35,12 +34,15 @@ export const ContainerTextInfo = styled.View`
 `;
 
 export const EmailInfo = styled.Text`
-    color: #dadcd5;
-    font-size: 14px;
-    font-weight: bold;
+  color: #dadcd5;
+  font-size: 14px;
+  font-weight: bold;
 `;
 
-export const NameInfo = styled.Text``;
+export const NameInfo = styled.Text`
+  color: #dadcd5;
+  font-size: 10px;
+`;
 
 export const ProfilePic = styled.Image`
   width: 50px;

@@ -17,14 +17,13 @@ export const LoginContext = createContext<LoginContextProps>({
 });
 
 function LoginProvider({ children }: LoginProviderProps) {
-  const { user, getInfo } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   async function signIn(email: string, password: string) {
     const requrestUser = await loadUser(email);
-
-    console.log(requrestUser);
     if (requrestUser) {
       if (requrestUser.password === password) {
+        setUser(requrestUser);
         return true;
       }
       return false;
@@ -36,7 +35,6 @@ function LoginProvider({ children }: LoginProviderProps) {
     try {
       const user = await AsyncStorage.getItem(email);
       if (user) {
-        getInfo(email);
         return JSON.parse(user);
       }
     } catch (err) {

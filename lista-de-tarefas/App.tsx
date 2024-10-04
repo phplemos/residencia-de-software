@@ -10,23 +10,27 @@ import LoginProvider from "./src/context/LoginContext";
 import CadastroProvider from "./src/context/CadastroContext";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import CustomDrawer from "./src/components/CustomDrawer";
-
+import UserProvider from "./src/context/UserContext";
 export default function App() {
   const Stack = createNativeStackNavigator();
 
   return (
     <LoginProvider>
       <CadastroProvider>
-        <NavigationContainer>
-          <Stack.Navigator
-            initialRouteName="Drawer"
-            screenOptions={{ headerShown: false }}
-          >
-            <Stack.Screen name="Drawer" component={AppDrawer} />
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Cadastro" component={Cadastro} />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <UserProvider>
+          <TarefaProvider>
+            <NavigationContainer>
+              <Stack.Navigator
+                initialRouteName="Login"
+                screenOptions={{ headerShown: false }}
+              >
+                <Stack.Screen name="Drawer" component={AppDrawer} />
+                <Stack.Screen name="Login" component={Login} />
+                <Stack.Screen name="Cadastro" component={Cadastro} />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </TarefaProvider>
+        </UserProvider>
       </CadastroProvider>
     </LoginProvider>
   );
@@ -35,23 +39,20 @@ export default function App() {
 export function AppDrawer() {
   const Drawer = createDrawerNavigator();
   return (
-    <TarefaProvider>
-      <Drawer.Navigator
-        initialRouteName="Home"
-        drawerContent={CustomDrawer}
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: "#272A23",
-          },
-          headerTintColor: "#DADCD5",
-          headerTitleStyle: { fontWeight: "bold" },
-        }}
-      >
-        <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="Pesquisar" component={Pesquisar} />
-        <Drawer.Screen name="VerTarefa" component={VerTarefa} />
-      </Drawer.Navigator>
-    </TarefaProvider>
+    <Drawer.Navigator
+      initialRouteName="Home"
+      drawerContent={CustomDrawer}
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#272A23",
+        },
+        headerTintColor: "#DADCD5",
+        headerTitleStyle: { fontWeight: "bold" },
+      }}
+    >
+      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Pesquisar" component={Pesquisar} />
+      <Drawer.Screen name="VerTarefa" component={VerTarefa} />
+    </Drawer.Navigator>
   );
 }
-

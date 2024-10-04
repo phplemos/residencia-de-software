@@ -22,10 +22,8 @@ export default function Pesquisar() {
     const filtrarTarefas = tarefas.filter((item) => item.titulo.toLowerCase().includes(searchText.toLowerCase()))
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
             <Container>
                 <ContainerTop>
-                    <VoltarButton popButton={navigation.goBack} nomeTarefa={"Procurar"} />
                     <SearchInput placeholder="Digite aqui" value={searchText} onChangeText={(text) => setSearchText(text)} />
                 </ContainerTop>
                 <FlatList
@@ -47,6 +45,5 @@ export default function Pesquisar() {
                 />
 
             </Container>
-        </SafeAreaView>
     );
 }

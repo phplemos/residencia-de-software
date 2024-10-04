@@ -1,11 +1,9 @@
 import { createContext, ReactNode, useState } from "react";
 import { UserProps } from "../utils/types";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-AsyncStorage;
 
 interface UserContextProps {
-  user: UserProps;
-  getInfo: (email: string) => void;
+  getUser: () => UserProps;
+  setUser: (user: UserProps) => void;
 }
 
 interface UserProviderProps {
@@ -13,36 +11,25 @@ interface UserProviderProps {
 }
 
 export const UserContext = createContext<UserContextProps>({
-  user: {
-    id: 0,
-    nome: "",
-    email: "",
-    profilePic: "",
+  getUser: () => {
+    return { id: 0, nome: "", email: "", profilePic: "" };
   },
-  getInfo: () => {},
+  setUser: () => {},
 });
 
 function UserProvider({ children }: UserProviderProps) {
-  const [user, setUser] = useState<UserProps>({
-    id: 0,
-    nome: "",
-    email: "",
-    profilePic: "",
-  });
+  const [userState, setUserState] = useState<UserProps>({} as UserProps);
 
-  async function getInfo(email: string) {
-    try {
-      const response = await AsyncStorage.getItem(email);
-      if (response) {
-        setUser(JSON.parse(response));
-      }
-    } catch (err) {
-      console.log(err);
-    }
+  function getUser() {
+    return userState;
+  }
+
+  function setUser(user: UserProps) {
+    setUserState(user);
   }
 
   return (
-    <UserContext.Provider value={{ user, getInfo }}>
+    <UserContext.Provider value={{ getUser, setUser }}>
       {children}
     </UserContext.Provider>
   );

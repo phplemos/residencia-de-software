@@ -25,4 +25,5 @@ export type RootStackParamsList = {
   User?: UserProps;
   Cadastro: undefined;
   Drawer: undefined;
+  Pesquisar:undefined;
 };
