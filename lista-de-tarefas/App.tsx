@@ -11,6 +11,7 @@ import CadastroProvider from "./src/context/CadastroContext";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import CustomDrawer from "./src/components/CustomDrawer";
 import UserProvider from "./src/context/UserContext";
+import RecuperarConta from "./src/screens/RecuperarConta";
 export default function App() {
   const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,10 @@ export default function App() {
               >
                 <Stack.Screen name="Drawer" component={AppDrawer} />
                 <Stack.Screen name="Login" component={Login} />
+                <Stack.Screen
+                  name="RecuperarConta"
+                  component={RecuperarConta}
+                />
                 <Stack.Screen name="Cadastro" component={Cadastro} />
               </Stack.Navigator>
             </NavigationContainer>
