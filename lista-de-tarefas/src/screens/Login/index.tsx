@@ -77,7 +77,7 @@ export function Login() {
             {touched.password && errors.password && (
               <Text style={{ color: "red" }}>{errors.password}</Text>
             )}
-            <ButtonText>
+            <ButtonText onPress={() => navigation.navigate("RecuperarConta")}>
               <Text>Esqueceu a senha?</Text>
             </ButtonText>
             <LoginButton onPress={() => handleSubmit()}>

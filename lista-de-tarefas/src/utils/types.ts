@@ -26,4 +26,5 @@ export type RootStackParamsList = {
   Cadastro: undefined;
   Drawer: undefined;
   Pesquisar:undefined;
+  RecuperarConta: undefined;
 };
