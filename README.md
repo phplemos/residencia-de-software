@@ -53,6 +53,6 @@ $ npx expo start
 
 ---
 
-Feito por (...)
+Feito por Bruno Lobão, Gisele Gomes, Italo Souza, Laura Lavinnya e Pedro Herinque Pinheiro.
 
 ---
