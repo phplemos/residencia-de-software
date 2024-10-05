@@ -22,7 +22,7 @@ export default function App() {
           <TarefaProvider>
             <NavigationContainer>
               <Stack.Navigator
-                initialRouteName="Drawer"
+                initialRouteName="RecuperarConta"
                 screenOptions={{ headerShown: false }}
               >
                 <Stack.Screen name="Drawer" component={AppDrawer} />
