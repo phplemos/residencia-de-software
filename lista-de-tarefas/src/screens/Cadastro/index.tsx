@@ -45,7 +45,7 @@ export function Cadastro() {
     <Container>
       <ContainerTopBar>
         <VoltarButton
-          popButton={() => navigation.goBack}
+          popButton={() => navigation.goBack()}
           nomeTarefa={"para o login"}
         />
       </ContainerTopBar>

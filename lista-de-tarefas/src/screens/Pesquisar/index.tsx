@@ -76,7 +76,8 @@ export default function Pesquisar() {
           onChangeText={(text) => setSearchText(text)}
         />
       </ContainerTop>
-      <FlatList style={{ width: "80%" }}
+      <FlatList
+        style={{ width: "80%" }}
         data={filtrarTarefas}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
@@ -89,9 +90,9 @@ export default function Pesquisar() {
           />
         )}
         ListEmptyComponent={() => (
-          <ContainerItem>
+          <View style={{ alignItems: "center", marginTop:20 }}>
             <Text style={{ textAlign: "left" }}>Nenhum item encontrado</Text>
-          </ContainerItem>
+          </View>
         )}
         contentContainerStyle={{ paddingBottom: 20 }}
       />

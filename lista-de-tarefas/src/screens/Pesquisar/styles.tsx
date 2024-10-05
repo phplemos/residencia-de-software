@@ -13,7 +13,6 @@ export const ContainerTop = styled.View`
   margin-top: 20px;
   width: 90%;
 `;
-
 export const ContainerItem = styled.View`
   width: 90%;
   background-color: #272a23;
