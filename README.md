@@ -2,7 +2,7 @@
   <h1 align="center">Lista de Tarefas - React Native | RESTIC36</h1>
 </p>
 
-ToDo List é uma aplicação para a listagem e controle de tarefas do usuário, feito em React Native para dispositivos móveis.
+Lista de tarefas é uma aplicação para a listagem e controle de tarefas do usuário, feito em React Native para dispositivos móveis.
 
 ---
 
@@ -16,7 +16,7 @@ As seguintes tecnologias foram empregadas na criação deste projeto:
 
 - [React Native](https://reactnative.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Expo Checkbox](https://docs.expo.dev/versions/latest/sdk/checkbox/)
+- [Expo](https://docs.expo.dev/)
 - [React Navigation](https://reactnavigation.org/)
 
 ---
