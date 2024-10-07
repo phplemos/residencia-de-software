@@ -13,18 +13,19 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { FormInput } from "../../components/FormInput";
 
-const validationSchema = Yup.object({
-  email: Yup.string()
-    .email("Digite um email válido")
-    .required("O campo de email é obrigatório"),
-});
 
-const showAlert = () => {
-  Alert.alert("Atenção", "Verifique seu e-mail", [{ text: "OK" }]);
-};
 
 export default function RecuperarConta() {
   const navigation = useNavigation();
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .email("Digite um email válido")
+      .required("O campo de email é obrigatório"),
+  });
+  
+  const showAlert = () => {
+    Alert.alert("Atenção", "Verifique seu e-mail", [{ text: "OK" }]);
+  };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
