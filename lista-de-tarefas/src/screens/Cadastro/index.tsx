@@ -36,7 +36,6 @@ export function Cadastro() {
   });
 
   function handleSignUp({ id, nome, email, password, profilePic }: UserProps) {
-    console.log({ id, nome, email, password, profilePic });
     createUser({ id, nome, email, password, profilePic });
     navigation.navigate("Login");
   }

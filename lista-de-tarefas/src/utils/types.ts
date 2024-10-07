@@ -22,7 +22,6 @@ export type RootStackParamsList = {
   Home: undefined;
   VerTarefa?: TarefaProps;
   Login?: LoginProps;
-  User?: UserProps;
   Cadastro: undefined;
   Drawer: undefined;
   Pesquisar:undefined;

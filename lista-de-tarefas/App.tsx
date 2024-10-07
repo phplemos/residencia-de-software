@@ -10,7 +10,6 @@ import LoginProvider from "./src/context/LoginContext";
 import CadastroProvider from "./src/context/CadastroContext";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import CustomDrawer from "./src/components/CustomDrawer";
-import UserProvider from "./src/context/UserContext";
 import RecuperarConta from "./src/screens/RecuperarConta";
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -18,7 +17,6 @@ export default function App() {
   return (
     <LoginProvider>
       <CadastroProvider>
-        <UserProvider>
           <TarefaProvider>
             <NavigationContainer>
               <Stack.Navigator
@@ -35,7 +33,6 @@ export default function App() {
               </Stack.Navigator>
             </NavigationContainer>
           </TarefaProvider>
-        </UserProvider>
       </CadastroProvider>
     </LoginProvider>
   );

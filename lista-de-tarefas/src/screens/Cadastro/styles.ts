@@ -5,7 +5,7 @@ export const Container = styled.View`
   width: 100%;
   height: 100%;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
 `;
 
 export const ContainerForm = styled.View`
@@ -58,5 +58,5 @@ export const TextSignUpButton = styled.Text`
 
 export const ContainerTopBar = styled.View`
   width: 100%;
-  padding-left: 10px;
+  padding-left: 20px;
 `;

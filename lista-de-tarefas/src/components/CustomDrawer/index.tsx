@@ -14,22 +14,21 @@ import { RootStackParamsList } from "../../utils/types";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../context/UserContext";
+import { LoginContext } from "../../context/LoginContext";
 
 type Props = NativeStackScreenProps<RootStackParamsList>;
 
 export default function CustomDrawer({ ...props }) {
   const navigation = useNavigation<Props["navigation"]>();
-  const { getUser } = useContext(UserContext);
+  const { user } = useContext(LoginContext);
 
-  console.log(getUser());
   return (
     <Container>
       <ContainerProfile>
         <ContainerProfileInfo>
           <ContainerTextInfo>
-            <EmailInfo>emailteste@email.com</EmailInfo>
-            <NameInfo>Fulano</NameInfo>
+            <EmailInfo>{user ? user.email : "emailteste@email.com"}</EmailInfo>
+            <NameInfo>{user ? user.nome : "Fulano da silva"}</NameInfo>
           </ContainerTextInfo>
           <ProfilePic source={require("../../assets/blank_profile.jpg")} />
         </ContainerProfileInfo>

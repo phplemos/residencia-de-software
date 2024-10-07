@@ -12,10 +12,8 @@ import { FlatList } from "react-native";
 import { Tarefa } from "../../components/Tarefa";
 import { BotaoAddTarefa } from "../../components/BotaoAddTarefa";
 import { StatusBar } from "expo-status-bar";
-import { VoltarButton } from "../../components/VoltarButton";
 import { TarefaContext } from "../../context/TarefaContext";
 import { TarefaProps } from "../../utils/types";
-import { AppTopBar } from "../../components/AppTopBar";
 
 export default function Home() {
   const { tarefas, createTarefa, setTarefas } = useContext(TarefaContext);

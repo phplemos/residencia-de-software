@@ -1,11 +1,10 @@
-import { createContext, ReactNode, useContext } from "react";
-import { UserProps } from "../utils/types";
+import { createContext, ReactNode, useContext, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { UserContext } from "./UserContext";
-import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
+import { UserProps } from "../utils/types";
 
 interface LoginContextProps {
   signIn: (email: string, password: string) => Promise<boolean>;
+  user: UserProps;
 }
 
 interface LoginProviderProps {
@@ -14,16 +13,20 @@ interface LoginProviderProps {
 
 export const LoginContext = createContext<LoginContextProps>({
   signIn: async () => false,
+  user: { id: 0, nome: "", email: "", password: "", profilePic: "" },
 });
 
 function LoginProvider({ children }: LoginProviderProps) {
-  const { setUser } = useContext(UserContext);
-
+  const [user, setUser] = useState<UserProps>({} as UserProps);
   async function signIn(email: string, password: string) {
     const requrestUser = await loadUser(email);
     if (requrestUser) {
       if (requrestUser.password === password) {
-        setUser(requrestUser);
+        user.id = requrestUser.id;
+        user.nome = requrestUser.nome;
+        user.email = requrestUser.email;
+        user.password = requrestUser.password;
+        user.profilePic = requrestUser.profilePic;
         return true;
       }
       return false;
@@ -38,12 +41,14 @@ function LoginProvider({ children }: LoginProviderProps) {
         return JSON.parse(user);
       }
     } catch (err) {
-      console.log(err);
       return null;
     }
   }
+
   return (
-    <LoginContext.Provider value={{ signIn }}>{children}</LoginContext.Provider>
+    <LoginContext.Provider value={{ user, signIn }}>
+      {children}
+    </LoginContext.Provider>
   );
 }
 
