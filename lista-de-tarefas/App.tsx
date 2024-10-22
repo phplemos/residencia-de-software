@@ -28,7 +28,7 @@ export default function App() {
                 <Stack.Screen
                   name="RecuperarConta"
                   component={RecuperarConta}
-                />
+                  />
                 <Stack.Screen name="Cadastro" component={Cadastro} />
               </Stack.Navigator>
             </NavigationContainer>
