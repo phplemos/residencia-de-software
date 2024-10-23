@@ -1,0 +1,17 @@
+{
+  "name": "vagas-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+  "start": "nodemon --exec node server.js"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7",
+    "uuid": "^10.0.0"
+  }
+}
