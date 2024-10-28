@@ -3,3 +3,6 @@ node_modules/
 
 # environment file
 .env
+
+# database file
+src/database/alunos.db
