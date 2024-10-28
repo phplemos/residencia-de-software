@@ -28,6 +28,7 @@ Para instalar é bem simples, basta dar um git clone no repositorio principal [G
 ```
 cd residencia-de-software
 cd aluno-api
+Duplica o arquivo ".env-example" e renomeia para ".env"
 npm install
 npm start
 ```
