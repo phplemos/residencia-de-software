@@ -10,10 +10,11 @@
   "author": "Feito por Bruno Lobão, Gisele Gomes, Italo Souza, Laura Lavinnya e Pedro Herinque Pinheiro.",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "nodemon": "^3.1.7",
-    "uuid": "^10.0.0",
     "sequelize": "^6.37.5",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "uuid": "^10.0.0"
   }
 }
