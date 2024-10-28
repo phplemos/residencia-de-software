@@ -26,7 +26,7 @@ As seguintes tecnologias foram empregadas na criação deste projeto:
 Clone o projeto para o local desejado em seu computador.
 
 ```bash
-$ git clone https://github.com/phplemos/residencia-de-software.git
+$ git clone https://github.com/phplemos/residencia-de-software/lista-de-tarefas.git
 ```
 
 ---
