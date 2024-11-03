@@ -18,4 +18,23 @@ async function getAlunoById(id) {
   }
 }
 
-export { createAluno, getAlunoById };
+async function updateAluno(id, { nome, email, nome_do_curso }) {
+  try {
+    const aluno = await Aluno.findByPk(id);
+    if (!aluno) {
+      throw new Error(`Aluno com ID ${id} não encontrado`);
+    }
+    // Atualiza os campos
+    aluno.nome = nome || aluno.nome;
+    aluno.email = email || aluno.email;
+    aluno.nome_do_curso = nome_do_curso || aluno.nome_do_curso;
+    
+    await aluno.save(); // aqui salva as alteracoes no banco
+    return aluno;
+  } catch (error) {
+    console.error("Erro ao atualizar aluno:", error);
+    throw error;
+  }
+}
+
+export { createAluno, getAlunoById, updateAluno };
