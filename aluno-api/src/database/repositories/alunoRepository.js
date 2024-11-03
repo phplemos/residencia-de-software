@@ -37,4 +37,14 @@ async function updateAluno(id, { nome, email, nome_do_curso }) {
   }
 }
 
-export { createAluno, getAlunoById, updateAluno };
+async function getAllAlunos() {
+  try {
+    return await Aluno.findAll();
+  } catch (error) {
+    console.error("Erro ao buscar todos os alunos:", error);
+    throw new Error(`Erro ao buscar alunos: ${error.message}`);
+  }
+}
+
+export { createAluno, getAlunoById, updateAluno, getAllAlunos };
+

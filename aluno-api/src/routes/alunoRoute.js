@@ -54,4 +54,14 @@ router.put("/:id", (req, res) => {
     });
 });
 
+// Rota para buscar todos os alunos
+router.get('/alunos', async (req, res) => {
+  try {
+    const alunos = await Aluno.findAll(); // Retorna todos os registros da tabela Aluno
+    res.status(200).json(alunos); // Envia a lista de alunos como JSON
+  } catch (error) {
+    res.status(500).json({ message: 'Erro ao buscar alunos', error: error.message });
+  }
+});
+
 export default router;
