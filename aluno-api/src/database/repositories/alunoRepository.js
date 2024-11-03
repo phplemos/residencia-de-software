@@ -5,4 +5,17 @@ async function createAluno({ nome, email, nome_do_curso }) {
   return Aluno.build({ nome, email, nome_do_curso }).save();
 }
 
-export { createAluno };
+async function getAlunoById(id) {
+  try {
+    const aluno = await Aluno.findByPk(id); // Busca aluno pelo ID
+    if (!aluno) {
+      throw new Error(`Aluno com ID ${id} não encontrado`);
+    }
+    return aluno; // Retorna o aluno encontrado
+  } catch (error) {
+    console.error("Erro ao buscar aluno por ID:", error);
+    throw error; // Lança o erro para tratamento posterior
+  }
+}
+
+export { createAluno, getAlunoById };

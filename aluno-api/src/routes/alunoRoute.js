@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createAluno } from "../database/repositories/alunoRepository.js";
+import { createAluno, getAlunoById } from "../database/repositories/alunoRepository.js";
 
 const router = Router();
 
@@ -22,6 +22,18 @@ router.post("/", (req, res) => {
     })
     .catch((err) => {
       res.status(400).json({ error: err.message });
+    });
+});
+
+// Rota para buscar um aluno por ID (READ - GET)
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+  getAlunoById(id)
+    .then((aluno) => {
+      res.json(aluno); // Retorna o aluno encontrado
+    })
+    .catch((err) => {
+      res.status(404).json({ error: err.message });
     });
 });
 
