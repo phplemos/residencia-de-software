@@ -1,12 +1,12 @@
 import Aluno from "../models/alunoModel.js";
 
 async function createAluno({ nome, email, nome_do_curso }) {
-  await Aluno.sync({ force: true });
-  return Aluno.build({ nome, email, nome_do_curso }).save();
+  return Aluno.create({ nome, email, nome_do_curso });
 }
 
 async function getAlunoById(id) {
   try {
+    console.log(id);
     const aluno = await Aluno.findByPk(id); // Busca aluno pelo ID
     if (!aluno) {
       throw new Error(`Aluno com ID ${id} não encontrado`);
@@ -28,7 +28,7 @@ async function updateAluno(id, { nome, email, nome_do_curso }) {
     aluno.nome = nome || aluno.nome;
     aluno.email = email || aluno.email;
     aluno.nome_do_curso = nome_do_curso || aluno.nome_do_curso;
-    
+
     await aluno.save(); // aqui salva as alteracoes no banco
     return aluno;
   } catch (error) {
@@ -39,12 +39,26 @@ async function updateAluno(id, { nome, email, nome_do_curso }) {
 
 async function getAllAlunos() {
   try {
-    return await Aluno.findAll();
+    const alunos = await Aluno.findAll(); // Busca todos os alunos
+    return alunos; // Retorna a lista de alunos
   } catch (error) {
     console.error("Erro ao buscar todos os alunos:", error);
     throw new Error(`Erro ao buscar alunos: ${error.message}`);
   }
 }
 
-export { createAluno, getAlunoById, updateAluno, getAllAlunos };
+async function deleteAluno(id) {
+  try {
+    const alunos = await Aluno.destroy({
+      where: {
+        id: id,
+      },
+    });
+    return alunos;
+  } catch (error) {
+    console.error("Erro ao deletar aluno:", error);
+    throw new Error(`Erro ao deletar aluno: ${error.message}`);
+  }
+}
 
+export { createAluno, getAlunoById, updateAluno, getAllAlunos, deleteAluno };
