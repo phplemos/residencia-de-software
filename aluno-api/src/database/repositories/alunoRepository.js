@@ -6,7 +6,6 @@ async function createAluno({ nome, email, nome_do_curso }) {
 
 async function getAlunoById(id) {
   try {
-    console.log(id);
     const aluno = await Aluno.findByPk(id); // Busca aluno pelo ID
     if (!aluno) {
       throw new Error(`Aluno com ID ${id} não encontrado`);
