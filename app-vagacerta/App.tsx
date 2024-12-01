@@ -12,10 +12,15 @@ import FormScreen  from './src/screens/Form';
 import List  from './src/screens/List';
 import Profile  from './src/screens/Profile';
 import Details  from './src/screens/Details';
+import { useAuth } from './src/components/ConText/AuthContext';
+import LogoutButton from './src/components/logoutButton/index';
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 const HomeStack = createNativeStackNavigator();
+
+
 
 function Auth(){
   
@@ -55,6 +60,39 @@ function Auth(){
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   )
+}
+
+function AppNavigator() {
+  const { isAuthenticated } = useAuth();
+
+  return (
+    
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+        {!isAuthenticated ? (
+          <>
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="FormScreen" component={FormScreen} />
+          </>
+        ) : (
+          <Stack.Screen name="Auth" component={Auth} />
+        )}
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+ 
+function logout () {
+return (
+    
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Profile">
+        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Login" component={Login} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  
+);
 }
 
 
