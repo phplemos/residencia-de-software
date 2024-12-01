@@ -16,10 +16,13 @@ import Logo from "../../components/Logo";
 import theme from "../../theme";
 import { Button } from "../../components/Button";
 import { VagaProps } from "../../utils/Types";
+import { Linking, Text } from "react-native";
 
 export default function Details({ route, navigation }) {
   const [id, setId] = useState(route.params.id);
-  const [vaga, setVaga] = useState<VagaProps>(null);
+  const [vaga, setVaga] = useState<VagaProps>({});
+
+  const checkStatus = vaga?.status !== 'aberta'
 
   const fetchVaga = async () => {
     try {
@@ -31,6 +34,7 @@ export default function Details({ route, navigation }) {
         date: data.dataCadastro,
         description: data.descricao,
         phone: data.telefone,
+        status: data.status,
         company: data.empresa,
       });
       console.log(id,vaga,response.data);
@@ -41,6 +45,16 @@ export default function Details({ route, navigation }) {
   useEffect(() => {
     fetchVaga();
   }, [id]);
+
+  const handleContactPress = () => {
+  if (vaga?.phone) {
+    const phoneNumber = vaga.phone.replace(/\D/g, ""); 
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber};`
+    Linking.openURL(whatsappUrl); 
+  } else {
+    console.log("Número de telefone não disponível.");
+  }
+};
 
   return (
     <Wrapper>
@@ -60,11 +74,16 @@ export default function Details({ route, navigation }) {
             <Description>{vaga.description}</Description>
           </ContentContainer>
 
+          {checkStatus ? (
+            <Text style={{color: 'red',fontWeight:'bold'}}>Vaga Encerrada!</Text>
+          ): (
           <Button
             title="Entrar em contato"
             noSpacing={true}
             variant="primary"
+            onPress={handleContactPress}
           />
+          )}
         </Container>
       ) : (
         <Title>A vaga não foi encontrada!</Title>
