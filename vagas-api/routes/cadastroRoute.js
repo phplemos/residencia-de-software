@@ -5,7 +5,7 @@ const cadastroRouter = Router();
 
 cadastroRouter.post("/", (req, res) => {
   const { nome, email, telefone, senha } = req.body;
-  if (!nome || !email || !telefone || !senha) {
+  if (!nome || !email|| !senha) {
     return res
       .status(400)
       .json({ message: "Campos obrigatórios não preenchidos" });

@@ -20,9 +20,9 @@ import { Linking, Text } from "react-native";
 
 export default function Details({ route, navigation }) {
   const [id, setId] = useState(route.params.id);
-  const [vaga, setVaga] = useState<VagaProps>({});
+  const [vaga, setVaga] = useState<VagaProps>({} as VagaProps);
 
-  const checkStatus = vaga?.status !== 'aberta'
+  const checkStatus = vaga?.status !== "aberta";
 
   const fetchVaga = async () => {
     try {
@@ -37,7 +37,6 @@ export default function Details({ route, navigation }) {
         status: data.status,
         company: data.empresa,
       });
-      console.log(id,vaga,response.data);
     } catch (error) {
       console.log(error);
     }
@@ -47,14 +46,14 @@ export default function Details({ route, navigation }) {
   }, [id]);
 
   const handleContactPress = () => {
-  if (vaga?.phone) {
-    const phoneNumber = vaga.phone.replace(/\D/g, ""); 
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber};`
-    Linking.openURL(whatsappUrl); 
-  } else {
-    console.log("Número de telefone não disponível.");
-  }
-};
+    if (vaga?.phone) {
+      const phoneNumber = vaga.phone.replace(/\D/g, "");
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber};`;
+      Linking.openURL(whatsappUrl);
+    } else {
+      console.log("Número de telefone não disponível.");
+    }
+  };
 
   return (
     <Wrapper>
@@ -75,14 +74,16 @@ export default function Details({ route, navigation }) {
           </ContentContainer>
 
           {checkStatus ? (
-            <Text style={{color: 'red',fontWeight:'bold'}}>Vaga Encerrada!</Text>
-          ): (
-          <Button
-            title="Entrar em contato"
-            noSpacing={true}
-            variant="primary"
-            onPress={handleContactPress}
-          />
+            <Text style={{ color: "red", fontWeight: "bold" }}>
+              Vaga Encerrada!
+            </Text>
+          ) : (
+            <Button
+              title="Entrar em contato"
+              noSpacing={true}
+              variant="primary"
+              onPress={handleContactPress}
+            />
           )}
         </Container>
       ) : (

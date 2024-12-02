@@ -18,7 +18,7 @@ export function findById(id) {
   return usuarios.find((usuario) => usuario.id == id);
 }
 
-export function create({ nome, email, telefone, senha }) {
+export function create({ nome, email, senha }) {
     const verifyUser = findByEmail(email);
     if(verifyUser){
         return null;
@@ -27,15 +27,14 @@ export function create({ nome, email, telefone, senha }) {
     id: uuidv4(),
     nome,
     email,
-    telefone,
     senha,
   };  
   usuarios.push(usuario);
   return usuario;
 }
 
-export function update(id, { nome, email, telefone, senha }) {
-  const index = usuarios.findIndex((usuario) => usuario.id === id);
+export function update(id, { nome, email, senha }) {
+  const index = usuarios.findIndex((usuario) => usuario.id == id);
   if (index < 0) {
     return null;
   }
@@ -43,7 +42,6 @@ export function update(id, { nome, email, telefone, senha }) {
     id,
     nome,
     email,
-    telefone,
     senha,
   };
   return usuarios[index];
