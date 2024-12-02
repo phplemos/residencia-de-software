@@ -38,7 +38,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       const response = await api.post("/login", { email: email, senha: senha });
       setUsuario(response.data);
       await AsyncStorage.setItem("isLogged", "true");
-      await AsyncStorage.setItem("userId", response.data.id);
+      await AsyncStorage.setItem("userId", `${response.data.id}`);
       return "200";
     } catch (e) {
       const error = e as AxiosError;
@@ -68,7 +68,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       });
       setUsuario(response.data);
       await AsyncStorage.setItem("isLogged", "true");
-      await AsyncStorage.setItem("userId", response.data.id);
+      await AsyncStorage.setItem("userId", `${response.data.id}`);
       return "200";
     } catch (e) {
       const error = e as AxiosError;
