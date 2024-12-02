@@ -1,8 +1,20 @@
-const { v4: uuidv4 } = require("uuid");
+import { v4 as uuidv4 } from "uuid";
+import fs from "fs";
 
-let vagas = [];
+const vagas = [];
 
-function create({ descricao, titulo, dataCadastro, telefone, empresa }) {
+const fetchData = async () => {
+  const dados = JSON.parse(fs.readFileSync("db.json", "utf8"));
+  vagas.push(...dados.vagas);
+};
+
+fetchData();
+
+export function findById(id) {
+  return vagas.find((vaga) => vaga.id == id);
+}
+
+export function create({ descricao, titulo, dataCadastro, telefone, empresa }) {
   const vaga = {
     id: uuidv4(),
     descricao,
@@ -15,8 +27,11 @@ function create({ descricao, titulo, dataCadastro, telefone, empresa }) {
   return vaga;
 }
 
-function update(id, { descricao, titulo, dataCadastro, telefone, empresa }) {
-  const index = vagas.findIndex((vaga) => vaga.id === id);
+export function update(
+  id,
+  { descricao, titulo, dataCadastro, telefone, empresa }
+) {
+  const index = vagas.findIndex((vaga) => vaga.id == id);
   if (index < 0) {
     return null;
   }
@@ -31,8 +46,8 @@ function update(id, { descricao, titulo, dataCadastro, telefone, empresa }) {
   return vagas[index];
 }
 
-function remove(id) {
-  const index = vagas.findIndex((vaga) => vaga.id === id);
+export function remove(id) {
+  const index = vagas.findIndex((vaga) => vaga.id == id);
   if (index < 0) {
     return false;
   }
@@ -40,8 +55,6 @@ function remove(id) {
   return true;
 }
 
-function findAll() {
+export function findAll() {
   return vagas;
 }
-
-module.exports = { create, update, remove, findAll };
