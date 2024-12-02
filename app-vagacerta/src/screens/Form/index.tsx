@@ -55,7 +55,7 @@ export default function FormScreen({ navigation }) {
             onChangeText={setPassword}
           />
           <Button
-            title="Entrar"
+            title="Cadastrar"
             noSpacing={true}
             variant="primary"
             onPress={handleCadastro}

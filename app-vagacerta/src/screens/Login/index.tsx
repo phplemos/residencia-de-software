@@ -75,7 +75,7 @@ export default function Login({ navigation }) {
             />
             <TextContainer>
               <TextBlack>Não tem uma conta? </TextBlack>
-              <TextLinkContainer onPress={() => navigation.navigate("Form")}>
+              <TextLinkContainer onPress={() => navigation.navigate("FormScreen")}>
                 <TextLink>Cadastre-se</TextLink>
               </TextLinkContainer>
             </TextContainer>

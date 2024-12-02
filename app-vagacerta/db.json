@@ -1,96 +1,96 @@
 {
-    "usuarios": [
-      {
-        "id": 1,
-        "nome": "João Silva",
-        "email": "joao.silva@example.com",
-        "senha": "senha123"
-      },
-      {
-        "id": 2,
-        "nome": "Maria Oliveira",
-        "email": "maria.oliveira@example.com",
-        "senha": "senha456"
-      },
-      {
-        "id": 3,
-        "nome": "Carlos Pereira",
-        "email": "carlos.pereira@example.com",
-        "senha": "senha789"
-      }
-    ],
-    "vagas": [
-      {
-        "id": 1,
-        "titulo": "Desenvolvedor Front-end",
-        "descricao": "Desenvolvimento de interfaces web utilizando React.",
-        "dataCadastro": "2024-06-30",
-        "telefone": "1234-5678",
-        "status": "aberta",
-        "empresa": "Tech Solutions"
-      },
-      {
-        "id": 2,
-        "titulo": "Desenvolvedor Back-end",
-        "descricao": "Desenvolvimento de APIs RESTful utilizando Node.js.",
-        "dataCadastro": "2024-06-28",
-        "telefone": "8765-4321",
-        "status": "aberta",
-        "empresa": "Innovative Tech"
-      },
-      {
-        "id": 3,
-        "titulo": "Analista de Sistemas",
-        "descricao": "Análise e levantamento de requisitos de sistemas.",
-        "dataCadastro": "2024-06-25",
-        "telefone": "9988-7766",
-        "status": "encerrada",
-        "empresa": "System Analysts Inc."
-      },
-      {
-        "id": 4,
-        "titulo": "Engenheiro de Software",
-        "descricao": "Desenvolvimento de software em diversas linguagens.",
-        "dataCadastro": "2024-06-20",
-        "telefone": "5544-3322",
-        "status": "aberta",
-        "empresa": "Global Software Solutions"
-      },
-      {
-        "id": 5,
-        "titulo": "Suporte Técnico",
-        "descricao": "Atendimento e suporte a clientes.",
-        "dataCadastro": "2024-06-15",
-        "telefone": "4433-2211",
-        "status": "encerrada",
-        "empresa": "Customer Support Ltd."
-      },
-      {
-        "id": 6,
-        "titulo": "Gerente de Projetos",
-        "descricao": "Gestão e coordenação de projetos de TI.",
-        "dataCadastro": "2024-06-10",
-        "telefone": "1122-3344",
-        "status": "aberta",
-        "empresa": "Project Managers Corp."
-      },
-      {
-        "id": 7,
-        "titulo": "Designer UX/UI",
-        "descricao": "Criação de interfaces e experiências de usuário.",
-        "dataCadastro": "2024-06-05",
-        "telefone": "6677-8899",
-        "status": "encerrada",
-        "empresa": "Creative Designs"
-      },
-      {
-        "id": 8,
-        "titulo": "Analista de Dados",
-        "descricao": "Análise e interpretação de dados empresariais.",
-        "dataCadastro": "2024-06-01",
-        "telefone": "5566-7788",
-        "status": "aberta",
-        "empresa": "Data Analysts LLC"
-      }
-    ]
-  }
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "João Silva",
+      "email": "joao.silva@example.com",
+      "senha": "senha123"
+    },
+    {
+      "id": "2",
+      "nome": "Maria Oliveira",
+      "email": "maria.oliveira@example.com",
+      "senha": "senha456"
+    },
+    {
+      "id": "3",
+      "nome": "Carlos Pereira",
+      "email": "carlos.pereira@example.com",
+      "senha": "senha789"
+    }
+  ],
+  "vagas": [
+    {
+      "id": "1",
+      "titulo": "Desenvolvedor Front-end",
+      "descricao": "Desenvolvimento de interfaces web utilizando React.",
+      "dataCadastro": "2024-06-30",
+      "telefone": "1234-5678",
+      "status": "aberta",
+      "empresa": "Tech Solutions"
+    },
+    {
+      "id": "2",
+      "titulo": "Desenvolvedor Back-end",
+      "descricao": "Desenvolvimento de APIs RESTful utilizando Node.js.",
+      "dataCadastro": "2024-06-28",
+      "telefone": "8765-4321",
+      "status": "aberta",
+      "empresa": "Innovative Tech"
+    },
+    {
+      "id": "3",
+      "titulo": "Analista de Sistemas",
+      "descricao": "Análise e levantamento de requisitos de sistemas.",
+      "dataCadastro": "2024-06-25",
+      "telefone": "9988-7766",
+      "status": "encerrada",
+      "empresa": "System Analysts Inc."
+    },
+    {
+      "id": "4",
+      "titulo": "Engenheiro de Software",
+      "descricao": "Desenvolvimento de software em diversas linguagens.",
+      "dataCadastro": "2024-06-20",
+      "telefone": "5544-3322",
+      "status": "aberta",
+      "empresa": "Global Software Solutions"
+    },
+    {
+      "id": "5",
+      "titulo": "Suporte Técnico",
+      "descricao": "Atendimento e suporte a clientes.",
+      "dataCadastro": "2024-06-15",
+      "telefone": "4433-2211",
+      "status": "encerrada",
+      "empresa": "Customer Support Ltd."
+    },
+    {
+      "id": "6",
+      "titulo": "Gerente de Projetos",
+      "descricao": "Gestão e coordenação de projetos de TI.",
+      "dataCadastro": "2024-06-10",
+      "telefone": "1122-3344",
+      "status": "aberta",
+      "empresa": "Project Managers Corp."
+    },
+    {
+      "id": "7",
+      "titulo": "Designer UX/UI",
+      "descricao": "Criação de interfaces e experiências de usuário.",
+      "dataCadastro": "2024-06-05",
+      "telefone": "6677-8899",
+      "status": "encerrada",
+      "empresa": "Creative Designs"
+    },
+    {
+      "id": "8",
+      "titulo": "Analista de Dados",
+      "descricao": "Análise e interpretação de dados empresariais.",
+      "dataCadastro": "2024-06-01",
+      "telefone": "5566-7788",
+      "status": "aberta",
+      "empresa": "Data Analysts LLC"
+    }
+  ]
+}
