@@ -11,6 +11,11 @@ const vagasRouter = Router();
 
 vagasRouter.post("/", (req, res) => {
   const { descricao, titulo, dataCadastro, telefone, empresa } = req.body;
+  if (!descricao || !titulo || !dataCadastro || !telefone || !empresa) {
+    return res
+      .status(400)
+      .json({ message: "Campos obrigatórios não preenchidos" });
+  }
   let vaga = create({ descricao, titulo, dataCadastro, telefone, empresa });
   return res.status(201).json(vaga);
 });

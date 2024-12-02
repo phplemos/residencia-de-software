@@ -5,6 +5,9 @@ const loginRouter = Router();
 
 loginRouter.post("/", (req, res) => {
   const { email, senha } = req.body;
+  if (!email || !senha) {
+    return res.status(400).json({ message: "Email e senha são obrigatórios" });
+  }
   const user = findByEmail(email);
   if (!user) {
     return res.status(404).json({ message: "Usuário não encontrado" });
