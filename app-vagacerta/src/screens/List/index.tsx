@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 import BGTop from "../../assets/BGTop.png";
 import Logo from "../../components/Logo";
 import VagaCard from "../../components/VagaCard";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { AxiosError } from "axios";
 
 export default function List() {
   const [vagas, setVagas] = useState([]);
@@ -14,10 +16,18 @@ export default function List() {
   useEffect(() => {
     const fetchVagas = async () => {
       try {
-        const response = await api.get("/vagas");
+        const response = await api.get("/vagas", { timeout: 2000 });
+        await AsyncStorage.setItem(
+          "vagasOffiline",
+          JSON.stringify(response.data)
+        );
         setVagas(response.data);
-      } catch (error) {
-        console.log(error);
+      } catch (e) {
+        const error = e as AxiosError;
+        if (!error.status) {
+          const vagasOffiline = await AsyncStorage.getItem("vagasOffiline");
+          setVagas(JSON.parse(vagasOffiline));
+        }
       } finally {
         setIsLoading(false);
       }
@@ -31,10 +41,11 @@ export default function List() {
       <Container>
         <Logo />
         <TextVagas>{vagas.length} vagas encontradas!</TextVagas>
-        <ListContainer>
-          {isLoading ? (
-            <Text>Carregando...</Text>
-          ) : (
+
+        {isLoading ? (
+          <Text>Carregando...</Text>
+        ) : (
+          <ListContainer>
             <FlatList
               data={vagas}
               keyExtractor={(item) => item.id.toString()}
@@ -54,8 +65,8 @@ export default function List() {
                 </View>
               )}
             />
-          )}
-        </ListContainer>
+          </ListContainer>
+        )}
       </Container>
     </Wrapper>
   );

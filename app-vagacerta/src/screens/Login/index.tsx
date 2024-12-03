@@ -21,6 +21,7 @@ export default function Login({ navigation }) {
   const { login, getUserFromApi } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const checkLogin = async () => {
@@ -37,13 +38,16 @@ export default function Login({ navigation }) {
   }, []);
 
   const handleLogin = async () => {
+    setLoading(true);
     if (!email || !password) {
+      setLoading(false);
       return alert("Preencha todos os campos.");
     }
     const response = await login(email, password);
     if (response === "200") {
       navigation.navigate("Auth");
     } else {
+      setLoading(false);
       return alert(response);
     }
   };
@@ -53,7 +57,9 @@ export default function Login({ navigation }) {
       <Image source={BGTop} />
       <Container>
         {verifyLogin ? (
-          <ActivityIndicator size="large" color="#0000ff" />
+          <Container>
+            <ActivityIndicator size="large" color="#0000ff" />
+          </Container>
         ) : (
           <Form>
             <Logo />
@@ -66,16 +72,25 @@ export default function Login({ navigation }) {
               label="Senha"
               placeholder="digite sua senha"
               onChangeText={setPassword}
+              secureTextEntry={true}
             />
-            <Button
-              title="Entrar"
-              noSpacing={true}
-              variant="primary"
-              onPress={handleLogin}
-            />
+            {loading ? (
+              <Container>
+                <ActivityIndicator size="large" color="#0000ff" />
+              </Container>
+            ) : (
+              <Button
+                title="Entrar"
+                noSpacing={true}
+                variant="primary"
+                onPress={handleLogin}
+              />
+            )}
             <TextContainer>
               <TextBlack>Não tem uma conta? </TextBlack>
-              <TextLinkContainer onPress={() => navigation.navigate("FormScreen")}>
+              <TextLinkContainer
+                onPress={() => navigation.navigate("FormScreen")}
+              >
                 <TextLink>Cadastre-se</TextLink>
               </TextLinkContainer>
             </TextContainer>

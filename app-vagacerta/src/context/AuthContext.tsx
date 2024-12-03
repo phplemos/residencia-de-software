@@ -25,23 +25,46 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   async function getUserFromApi(userId: String) {
     try {
-      const response = await api.get(`/usuarios/${userId}`);
-      setUsuario(response.data);
+      const userOffline = await AsyncStorage.getItem("userOffline");
+      if (userOffline) {
+        setUsuario(JSON.parse(userOffline));
+      } else {
+        const response = await api.get(`/usuarios/${userId}`);
+        setUsuario(response.data);
+      }
     } catch (e) {
       const error = e as AxiosError;
+      if (!error.status) {
+        console.log("Falha ao comunicar com api");
+        const userOffline = await AsyncStorage.getItem("userOffline");
+        if (userOffline) {
+          setUsuario(JSON.parse(userOffline));
+        }
+      }
       console.log(error.response.data);
     }
   }
 
   async function login(email: String, senha: String) {
     try {
-      const response = await api.post("/login", { email: email, senha: senha });
+      const response = await api.post(
+        "/login",
+        { email: email, senha: senha },
+        { timeout: 2000 }
+      );
+      console.log(response.data);
       setUsuario(response.data);
       await AsyncStorage.setItem("isLogged", "true");
       await AsyncStorage.setItem("userId", `${response.data.id}`);
+      await AsyncStorage.setItem("userOffline", JSON.stringify(response.data));
       return "200";
     } catch (e) {
       const error = e as AxiosError;
+      console.log("caiu no Catch");
+
+      if (!error.status) {
+        return "Falha ao comunicar com api";
+      }
       if (error.status === 401) {
         return "E-mail ou senha inválidos.";
       }

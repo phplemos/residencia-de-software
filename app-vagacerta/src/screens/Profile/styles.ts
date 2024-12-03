@@ -44,3 +44,9 @@ export const ContentContainer = styled.View`
   width: 100%;
   gap: 16px;
 `;
+
+export const ContainerText = styled.Text`
+  font-size: 24px;
+  font-weight: 700;
+  color: ${({ theme }) => theme.COLORS.BLACK};
+`;
