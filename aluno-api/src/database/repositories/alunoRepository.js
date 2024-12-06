@@ -2,7 +2,6 @@ import Aluno from "../models/alunoModel.js";
 
 async function createAluno({ nome, email, nome_do_curso }) {
   try {
-    Aluno.sync({ alter: true });
     return Aluno.create({ nome, email, nome_do_curso });
   } catch (err) {
     console.log(err);
@@ -11,7 +10,6 @@ async function createAluno({ nome, email, nome_do_curso }) {
 
 async function getAlunoById(id) {
   try {
-    Aluno.sync({ alter: true });
     const aluno = await Aluno.findByPk(id); // Busca aluno pelo ID
     if (!aluno) {
       throw new Error(`Aluno com ID ${id} não encontrado`);
@@ -25,7 +23,6 @@ async function getAlunoById(id) {
 
 async function updateAluno(id, { nome, email, nome_do_curso }) {
   try {
-    Aluno.sync({ alter: true });
     const aluno = await Aluno.findByPk(id);
     if (!aluno) {
       throw new Error(`Aluno com ID ${id} não encontrado`);
@@ -45,7 +42,6 @@ async function updateAluno(id, { nome, email, nome_do_curso }) {
 
 async function getAllAlunos() {
   try {
-    Aluno.sync({ alter: true });
     const alunos = await Aluno.findAll(); // Busca todos os alunos
     if (alunos.length === 0) {
       return `Nenhum aluno encontrado`;
@@ -59,13 +55,15 @@ async function getAllAlunos() {
 
 async function deleteAluno(id) {
   try {
-    Aluno.sync({ alter: true });
     const alunos = await Aluno.destroy({
       where: {
         id: id,
       },
     });
-    return alunos;
+    if (alunos === 0) {
+      throw new Error(`Aluno com ID ${id} não encontrado`);
+    }
+    return { message: "Aluno deletado com sucesso" };
   } catch (error) {
     console.error("Erro ao deletar aluno:", error);
     throw new Error(`Erro ao deletar aluno: ${error.message}`);

@@ -21,4 +21,5 @@ const Aluno = sequelize.define("alunos", {
   },
 });
 
+Aluno.sync();
 export default Aluno;
